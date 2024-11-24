@@ -1,0 +1,22 @@
+package:
+  name: "axtoolkit"       # 包名
+  version: "0.1.0"         # 版本号
+
+source:
+  path: .                  # 本地构建
+
+build:
+  number: 0
+  script: python -m pip install .  # 使用 pip 安装
+
+requirements:
+  host:
+    - python >=3.9         # 构建环境所需的依赖
+    - pip                  # 使用 pip 打包
+  run:
+    - python >=3.9         # 运行时的依赖
+
+about:
+  home: "https://github.com/zhushixin/my_package"
+  license: "MIT"
+  summary: "A personal Python package example"
