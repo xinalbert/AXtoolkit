@@ -21,7 +21,10 @@ jobs:
 
     - name: Install conda-build
       run: conda install conda-build anaconda-client
-
+    - name: Install anaconda-client
+      run: conda install -c conda-forge anaconda-client
+    - name: Check anaconda-client
+      run: which anaconda
     - name: Build Conda package
       run: conda build .
 
@@ -31,4 +34,4 @@ jobs:
       run: |
         conda install anaconda-client
         PACKAGE_PATH=$(conda build --output .)  # 获取生成包的路径
-        conda upload $PACKAGE_PATH --label main --user your_username
+        anaconda upload $PACKAGE_PATH --label main --user your_username

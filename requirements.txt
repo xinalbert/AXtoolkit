@@ -1,6 +1,3 @@
-psutil
-matplotlib
-python
-setuptools
-
-
+psutil==5.9.5
+matplotlib==3.7.3
+setuptools==73.0.1
