@@ -31,4 +31,4 @@ jobs:
       run: |
         conda install anaconda-client
         PACKAGE_PATH=$(conda build --output .)  # 获取生成包的路径
-        anaconda upload $PACKAGE_PATH --label main --user your_username
+        conda upload $PACKAGE_PATH --label main --user your_username
