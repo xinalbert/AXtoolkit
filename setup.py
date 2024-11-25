@@ -16,9 +16,9 @@ setup(
         'numpy',
         'matplotlib',
         'pandas',
-        ''
+        'psutil'
         ],
-    python_requires='>=3.8',
+    python_requires='>=3.11.10',
     entry_points={
         'console_scripts': [
             'svg2pngpdf = axtoolkit.utlscript.svg2pngpdf:main',

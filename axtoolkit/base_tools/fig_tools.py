@@ -1,5 +1,3 @@
-import fig_tools
-
 
 class FigTools:
     def __init__(self):
