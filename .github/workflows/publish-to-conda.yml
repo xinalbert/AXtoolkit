@@ -1,0 +1,34 @@
+name: Publish to Conda
+
+on:
+  push:
+    tags:
+      - 'v*'  # 仅在推送标签时触发
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up Miniconda
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        auto-update-conda: true
+        python-version: 3.9
+
+    - name: Install conda-build
+      run: conda install conda-build anaconda-client
+
+    - name: Build Conda package
+      run: conda build .
+
+    - name: Publish to Anaconda
+      env:
+        ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
+      run: |
+        conda install anaconda-client
+        PACKAGE_PATH=$(conda build --output .)  # 获取生成包的路径
+        anaconda upload $PACKAGE_PATH --label main --user your_username

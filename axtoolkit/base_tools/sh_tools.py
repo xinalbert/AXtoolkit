@@ -1,6 +1,6 @@
 import os
 
-class linux_sh_tools:
+class ShellTools:
     def __init__(self):
         pass
 
