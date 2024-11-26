@@ -1,1 +1,1 @@
-from ..axtoolkit import FigTools
+from axtoolkit import *
