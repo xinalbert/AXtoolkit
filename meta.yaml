@@ -11,10 +11,10 @@ build:
 
 requirements:
   host:
-    - python >=3.11.10         # 构建环境所需的依赖
+    - python >=3.8         # 构建环境所需的依赖
     - pip                  # 使用 pip 打包
   run:
-    - python >=3.11.10         # 运行时的依赖
+    - python >=3.8         # 运行时的依赖
 
 about:
   home: "https://github.com/zhushixin/my_package"
