@@ -8,6 +8,10 @@ setup(
     author_email='<albert_xin@qq.com>',
     url='',
     packages=find_packages(),
+    package_data={
+        'my_package': ['utlscript/*.py'],  # 包含 scripts 目录下的所有 Python 脚本
+    },
+    include_package_data=True,
     classifiers=[
         'Programming Language :: Python :: 3.8',
         'License :: OSI Approved :: MIT License',
@@ -22,7 +26,7 @@ setup(
     entry_points={
     'console_scripts': [
         'svg2pngpdf = axtoolkit.utlscript.svg2pngpdf:main',  # 假设有 main 函数
-        'sge_submit = axtoolkit.utlscript.terminal_command_manager.pipeline_qsub_commands'  # 指定正确的可调用函数
+        'sge_submit = axtoolkit.utlscript.terminal_command_manager_tools:pipeline_qsub_commands'  # 指定正确的可调用函数
     ]
 }
     
