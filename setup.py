@@ -1,6 +1,10 @@
+""" setup.py """
 from setuptools import setup, find_packages
 
 def parse_requirements(file):
+    """
+    This function parses requirements from a file and returns a list of strings.
+    """
     with open(file, 'r', encoding='utf-8') as f:
         return [line.strip() for line in f if line.strip() and not line.startswith('#')]
 
@@ -28,6 +32,5 @@ setup(
         'sge_submit = axtoolkit.utlscript.terminal_command_manager_tools:pipeline_qsub_commands'  # 指定正确的可调用函数
     ]
 }
-    
-
 )
+# End of setup.py
