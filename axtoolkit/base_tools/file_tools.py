@@ -2,6 +2,7 @@ import os
 import datetime
 import sys
 import shutil
+from pathlib Path
 
 
 class FileTools:
@@ -225,8 +226,10 @@ class FileTools:
         if file_path == None:
             pre_path = os.getcwd()
             print(f"Current working directory: {pre_path}")
+        elif Path(file_path).is_dir():
+            pre_path = file_path
         else:
-            pre_path = FileTools.get_dir_name(file_path)
+            pre_path = os.path.dirname(file_path)
         
         if file_name == None:
             file_path = os.path.join(pre_path, f'new__file_{time_str}.txt')
