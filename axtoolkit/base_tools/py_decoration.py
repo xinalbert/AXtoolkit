@@ -4,7 +4,7 @@ import functools
 import datetime
 import sys
 import os
-import file_tools
+from .file_tools import FileTools
 # sys.path.append('/share/nas2/zhushixin/python_script/python_bin')
 
 
@@ -73,7 +73,7 @@ class PyDecorator:
             start_time = datetime.datetime.now()
             result = func(*args, **kwargs)
             end_time = datetime.datetime.now()
-            file_get = file_tools.FileTools.replace_extension(sys.argv[0], new_extension = None)
+            file_get = FileTools.replace_extension(sys.argv[0], new_extension = None)
             print(f"\nRuntime of {file_get}: {end_time - start_time}\n")
             return result
         return wrapper
