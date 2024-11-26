@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='axtoolkit',
-    version='0.1.0',
+    version='0.1.1',
     description='A toolkit for analyzing and processing data',
     author='AlbertXin',
     author_email='<albert_xin@qq.com>',
