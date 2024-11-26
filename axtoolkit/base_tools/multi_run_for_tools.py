@@ -15,16 +15,16 @@ class MultiRun:
         self.args_list = args_list
         self.max_threads = max_threads
         self.kwargs = kwargs
-
-    def get_free_cpus(self) -> int:
+    @staticmethod
+    def get_free_cpus() -> int:
         """
-       This function returns the number of free CPUs on the system.
+        This function returns the number of free CPUs on the system.
         Args:
             threshold: The threshold for CPU usage percentage, default is 30%.
         Returns:
             The number of free CPUs.
         """
-        threshold = self.kwargs.get("threshold", 30)
+        threshold = 30
         cpu_percent = psutil.cpu_percent(interval=1, percpu=True)
         free_cpus = sum(1 for p in cpu_percent if p < threshold)
         return free_cpus

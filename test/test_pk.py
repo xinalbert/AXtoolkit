@@ -1,1 +1,6 @@
-from axtoolkit.utlscript.terminal_command_manager_tools import pipeline_qsub_commands
+from axtoolkit import *
+
+print(FigTools.fig_out_path("/data_path/ro/tomyfile"))
+# print(FileTools.)
+# multi_get = MultiRun()
+print(MultiRun.get_free_cpus())

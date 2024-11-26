@@ -35,6 +35,7 @@ class PyDecorator:
         """
         def wrapper(*args, **kwargs):
             # 调用原始函数并获取结果
+            cache_dic = {}
             result = func(*args, **kwargs)
             
             # 获取最后一个参数

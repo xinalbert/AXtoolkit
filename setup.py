@@ -1,5 +1,9 @@
 from setuptools import setup, find_packages
 
+def parse_requirements(file):
+    with open(file, 'r', encoding='utf-8') as f:
+        return [line.strip() for line in f if line.strip() and not line.startswith('#')]
+
 setup(
     name='axtoolkit',
     version='0.1.2',
@@ -16,12 +20,7 @@ setup(
         'Programming Language :: Python :: 3.8',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',],
-    install_requires=[
-        'numpy',
-        'matplotlib',
-        'pandas',
-        'psutil'
-        ],
+    install_requires=parse_requirements('requirements.txt'),
     python_requires='>=3.8',
     entry_points={
     'console_scripts': [

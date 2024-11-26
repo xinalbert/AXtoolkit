@@ -2,12 +2,13 @@ import os
 import datetime
 import sys
 import shutil
-from pathlib Path
+from pathlib import Path
 
 
 class FileTools:
     def __init__(self):
         pass
+    @staticmethod
     def file2list(file_path):
         """Reads a file and returns a list of its lines without newline characters.
         Args:
@@ -22,7 +23,7 @@ class FileTools:
         """
         with open(file_path, 'r') as file:
             return [line.strip() for line in file]
-        
+    @staticmethod
     def get_files_with_pattern(directory, pattern, recursive=False):
         """This function returns a list of all files in a directory that match the given pattern.
         Args:
@@ -44,7 +45,7 @@ class FileTools:
         search_path = os.path.join(directory, '**', pattern) if recursive else os.path.join(directory, pattern)
         return glob.glob(search_path, recursive=recursive)
 
-
+    @staticmethod
     def get_column(file_path, column_num=1, delimiter='\t'):
         """This function reads a file and yields values from the specified column.
         Args:
@@ -64,14 +65,12 @@ class FileTools:
         """
         if column_num < 1:
             raise ValueError("column_num must be a positive integer starting from 1.")
-        
         with open(file_path, 'r') as file:
             for line in file:
                 parts = line.strip().split(delimiter)
                 if len(parts) < column_num:
                     raise IndexError(f"Line does not have enough columns: {line.strip()}")
-                yield parts[column_num - 1]
-        
+                yield parts[column_num - 1] 
 
     # def replace_extension(file_path, new_extension):
     #     """This function replace the file extension to a new extension
@@ -84,9 +83,8 @@ class FileTools:
     #         >>> replace_extension('/path/to/file.txt', 'csv')
     #         '/path/to/file.csv'
     #     """
-    #  
     #     return f"{os.path.splitext(file_path)[0]}.{new_extension}"
-
+    @staticmethod
     def mkdir(file_path):
         """This function creates a directory if it does not exist.
         Args:
@@ -99,7 +97,7 @@ class FileTools:
         if not os.path.exists(file_path):
             os.makedirs(file_path, exist_ok=True)
 
-
+    @staticmethod
     def pwd():
         """This function returns the current working directory.
         Returns:
@@ -109,7 +107,7 @@ class FileTools:
             '/path/to/directory'
         """
         return os.getcwd()  
-
+    @staticmethod
     def ls(directory):
         """This function returns a list of all files and directories in a directory.
         Args:
@@ -125,7 +123,7 @@ class FileTools:
         if not os.path.isdir(directory):
             raise ValueError(f"The directory '{directory}' does not exist or is not a directory.")
         return os.listdir(directory)
-
+    @staticmethod
     def cp(src, dst):
         """This function copies a file or directory to a new location.
         Args:
@@ -140,7 +138,7 @@ class FileTools:
             shutil.copytree(src, dst)
         else:
             shutil.copy(src, dst) 
-
+    @staticmethod
     def mv(src, dst):
         """This function moves a file or directory to a new location.
         Args:
@@ -155,7 +153,7 @@ class FileTools:
             shutil.move(src, dst)
         except shutil.Error as e:
             print(f"Error: {e.args[0]}")
-        
+    @staticmethod
     def rm(file_path):
         """This function removes a file or directory.
         Args:
@@ -172,7 +170,7 @@ class FileTools:
                 os.remove(file_path)
         except OSError as e:
             print(f"Error: {e.args[0]}")
-
+    @staticmethod
     def replace_extension(file_path, new_extension = 'txt', base_name=False):
         """
         This function replace the file extension to a new extension
@@ -193,7 +191,7 @@ class FileTools:
             return f"{os.path.splitext(file_path)[0]}"
         else:
             return f"{os.path.splitext(file_path)[0]}.{new_extension}"
-
+    @staticmethod
     def get_dir_name(file_path):
         """
         This function returns the directory name of a file path.
@@ -207,7 +205,7 @@ class FileTools:
             '/path/to'
         """
         return os.path.dirname(file_path)
-
+    @staticmethod
     def def_new_save_path(file_path, file_name=None):
         """
         This function returns the new save path of a file path with a new extension.

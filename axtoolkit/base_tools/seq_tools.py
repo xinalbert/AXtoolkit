@@ -1,7 +1,7 @@
 class SeqTools:
     def __init__(self):
         pass
-
+    @staticmethod
     def read_fasta(file_path):
         '''read a fasta file return the fasta dic contain seq and length of the seq
         Args:

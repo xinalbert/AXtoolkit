@@ -4,6 +4,7 @@ from rdkit import Chem
 class Ligandkit:
     def __init__(self):
         pass
+    @staticmethod
     def sdf_to_smiles(sdf_file:str, smiles_file:str)->None:
         """
         Args:
@@ -24,7 +25,7 @@ class Ligandkit:
                     f.write(smiles+'\n')
         return smiles_file
 
-
+    @staticmethod
     def sdf_to_smiles_large_file(sdf_file: str, smiles_file: str) -> None:
         """
         Convert a large SDF file to SMILES format, optimizing memory usage.

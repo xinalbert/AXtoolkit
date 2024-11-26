@@ -1,7 +1,9 @@
+from .file_tools import FileTools
+
 class FigTools:
     def __init__(self):
         pass
-
+    @staticmethod
     def fig_out_path(out_name: str):
         """This function generate the output path of the figure.
         Args:
@@ -14,4 +16,4 @@ class FigTools:
             >>> fig_out_path('figure_name')
             ['figure_name.svg', 'figure_name.pdf', 'figure_name.png']
         """
-        return [f"{fig_tools.FigTools.replace_extension(out_name, ext)}" for ext in ['svg', 'pdf', 'png']]
+        return [f"{FileTools.replace_extension(out_name, ext)}" for ext in ['svg', 'pdf', 'png']]
