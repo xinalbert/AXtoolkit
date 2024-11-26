@@ -22,6 +22,7 @@ jobs:
     - name: Create and activate environment
       run: |
         conda env create -f environment.yml
+        conda init
         source ~/.bashrc
         conda activate build-env
     - name: Install dependencies

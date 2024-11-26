@@ -21,8 +21,8 @@ setup(
     python_requires='>=3.8',
     entry_points={
         'console_scripts': [
-            'svg2pngpdf = axtoolkit.utlscript.svg2pngpdf:main',
-            'sge_submit = axtoolkit.utlscript.terminal_command_manager:pipeline_qsub_commands'
+        'svg2pngpdf = axtoolkit.utlscript.svg2pngpdf:main',
+        'sge_submit = axtoolkit.utlscript.terminal_command_manager.pipeline_qsub_commands'
             ],
             }
     
