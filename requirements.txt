@@ -2,3 +2,4 @@ psutil
 matplotlib
 setuptools
 rdkit
+anaconda-client
