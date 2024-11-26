@@ -229,10 +229,10 @@ class FileTools:
             pre_path = FileTools.get_dir_name(file_path)
         
         if file_name == None:
-            file_path = os.join(pre_path, f'new__file_{time_str}.txt')
+            file_path = os.path.join(pre_path, f'new__file_{time_str}.txt')
             print(f"New file path: {file_path}")
             return file_path
         else:
-            file_path = os.join(pre_path, f'{file_name}')
+            file_path = os.path.join(pre_path, f'{file_name}')
             return file_path
 
