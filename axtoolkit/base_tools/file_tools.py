@@ -204,6 +204,7 @@ class FileTools:
             >>> get_dir_name('/path/to/file.txt')
             '/path/to'
         """
+        file_path   = os.path.abspath(file_path)
         return os.path.dirname(file_path)
     @staticmethod
     def def_new_save_path(file_path, file_name=None):
@@ -236,4 +237,50 @@ class FileTools:
         else:
             file_path = os.path.join(pre_path, f'{file_name}')
             return file_path
+    @staticmethod
+    def file2dic(file_path, delimiter='\t'):
+        """
+        This function reads a file and returns a dictionary of its lines.
 
+        Args:
+            - file_path: file path which you want to read.
+            - delimiter: delimiter used to split the file. Default is '\t'.
+        Return:
+            - a dictionary of the file.
+        Examples:
+            >>> file2dic('/path/to/file.txt')
+            {'col1': ['val1', 'val2'], 'col2': ['val3', 'val4']}
+        """
+        dic = {}
+        with open(file_path, 'r') as file:
+            for line in file:
+                parts = line.strip().split(delimiter)
+                if len(parts) == 1:
+                    dic[parts[0]] = []
+                else:
+                    for i in range(len(parts)):
+                        if i not in dic:
+                            dic[i] = []
+                        dic[i].append(parts[i])
+        return dic
+    @staticmethod
+    def dic2file(dic, file_path, delimiter='\t'):
+        """ 
+        This function writes a dictionary to a file.
+
+        Args:
+            - dic: a dictionary to be written to a file.
+            - file_path: file path which you want to write.
+            - delimiter: delimiter used to split the file. Default is '\t'.
+        Return:
+            - None
+        Examples:
+            >>> dic2file({'col1': ['val1', 'val2'], 'col2': ['val3', 'val4']}, '/path/to/file.txt')
+        """
+        with open(file_path, 'w') as file:
+            for key in dic:
+                if isinstance(key, int):
+                    file.write(delimiter.join(dic[key]) + '\n')
+                else:
+                    file.write(key + delimiter + delimiter.join(dic[key]) + '\n')
+                    
