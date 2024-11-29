@@ -2,14 +2,13 @@ class TextTools:
     def __init__(self):
         pass
     @staticmethod
-    def list_contrast(list_in: list) -> list:
+    def list_contrast(list_in: list, contacter: str = "_") -> list:
         """
-        This function calculates the contrast of a list of str.
-
-        Parameters:
-        list_in (list): A list of str.
-
+        This function is used to generate contrast list from a given list.
+        Args:
+            list_in: A list of elements.
+            contacter: A string used to connect two elements in the contrast list.
         Returns:
-        list: The contrast of the list of str.
+            A list of contrast elements.
         """
-        return [f"{i}_{j}" for idx, i in enumerate(list_in) for j in list_in[idx + 1:]]
+        return [f"{i}{contacter}{j}" for idx, i in enumerate(list_in) for j in list_in[idx + 1:]]

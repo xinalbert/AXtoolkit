@@ -207,7 +207,7 @@ class FileTools:
         file_path   = os.path.abspath(file_path)
         return os.path.dirname(file_path)
     @staticmethod
-    def def_new_save_path(file_path, file_name=None):
+    def def_new_save_path(file_path, file_name=None, new_folder=None):
         """
         This function returns the new save path of a file path with a new extension.
 
@@ -222,6 +222,7 @@ class FileTools:
         """
 
         time_str = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
+        file_path = os.path.abspath(file_path) if file_path != None else None
         if file_path == None:
             pre_path = os.getcwd()
             print(f"Current working directory: {pre_path}")
@@ -230,6 +231,9 @@ class FileTools:
         else:
             pre_path = os.path.dirname(file_path)
         
+        if new_folder != None:
+            pre_path = os.path.join(pre_path, new_folder)
+
         if file_name == None:
             file_path = os.path.join(pre_path, f'new__file_{time_str}.txt')
             print(f"New file path: {file_path}")
