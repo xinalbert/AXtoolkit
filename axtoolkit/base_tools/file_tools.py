@@ -214,6 +214,7 @@ class FileTools:
         Args:
             - file_path: file path which you want to replace the extension.
             - file_name: new file name, if None, the new file name will be 'new__file_YYYYMMDD_HHMMSS.txt'. Default is None.
+            - new_folder: new folder name, if None, the new file will be saved in the same folder. Default is None.
         Return:
             - the new save path of the file path with a new extension.
         Examples:
@@ -233,6 +234,7 @@ class FileTools:
         
         if new_folder != None:
             pre_path = os.path.join(pre_path, new_folder)
+            os.makedirs(pre_path, exist_ok=True)
 
         if file_name == None:
             file_path = os.path.join(pre_path, f'new__file_{time_str}.txt')
