@@ -227,7 +227,7 @@ class FileTools:
         if file_path == None:
             pre_path = os.getcwd()
             print(f"Current working directory: {pre_path}")
-        elif Path(file_path).is_dir():
+        elif os.path.isdir(file_path):
             pre_path = file_path
         else:
             pre_path = os.path.dirname(file_path)
