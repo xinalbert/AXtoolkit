@@ -87,7 +87,7 @@ class PyDecorator:
                 new_args = []
                 for arg in args:
                     # print(arg)
-                    if isinstance(arg, str) and os.path.exists(arg):
+                    if isinstance(arg, str) and os.path.exists(os.path.dirname(arg)):
                         path = arg.split('.')[0]
                         path = path + exten
                         print(path)

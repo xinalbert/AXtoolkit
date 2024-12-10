@@ -24,7 +24,7 @@ class FileTools:
         with open(file_path, 'r') as file:
             return [line.strip() for line in file]
     @staticmethod
-    def get_files_with_pattern(directory, pattern, recursive=False):
+    def gfwp(directory, pattern, recursive=False):
         """This function returns a list of all files in a directory that match the given pattern.
         Args:
             directory (str): The directory path.
@@ -35,7 +35,7 @@ class FileTools:
         Raises:
             ValueError: If the directory does not exist or is not a directory.
         Examples:
-            >>> get_files_with_pattern('/path/to/directory', '*.txt')
+            >>> gfwp('/path/to/directory', '*.txt')
             ['/path/to/directory/file1.txt', '/path/to/directory/file2.txt']
         """
         import glob
@@ -207,7 +207,7 @@ class FileTools:
         file_path   = os.path.abspath(file_path)
         return os.path.dirname(file_path)
     @staticmethod
-    def def_new_save_path(file_path, file_name=None, new_folder=None):
+    def dnsp(file_path, file_name=None, new_folder=None):
         """
         This function returns the new save path of a file path with a new extension.
 
@@ -218,7 +218,7 @@ class FileTools:
         Return:
             - the new save path of the file path with a new extension.
         Examples:
-            >>> def_new_save_path('/path/to/file.txt', 'new_file.csv')
+            >>> dnsp('/path/to/file.txt', 'new_file.csv')
             '/path/to/new_file.csv'
         """
 

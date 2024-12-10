@@ -58,4 +58,5 @@ class MultiRun:
         """
         调用实例的 `multi_threads_run` 方法并返回结果。
         """
+        print(f"Running function with {threads} threads...")
         return MultiRun.multi_threads_run(self.func, self.args_list, self.max_threads)
