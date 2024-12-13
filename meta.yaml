@@ -1,6 +1,6 @@
 package:
   name: "axtoolkit"       # 包名
-  version: "0.1.0"         # 版本号
+  version: "0.1.01"         # 版本号
 
 source:
   path: .                  # 本地构建
@@ -13,10 +13,22 @@ requirements:
   host:
     - python >=3.8         # 构建环境所需的依赖
     - pip                  # 使用 pip 打包
+  build:
+    - python >=3.8         # 构建时的依赖
+    - psutil
+    - matplotlib
+    - rdkit
+    - pathlib
+    - setuptools
   run:
     - python >=3.8         # 运行时的依赖
+    - psutil
+    - matplotlib
+    - rdkit
+    - pathlib
+    - setuptools
 
 about:
-  home: "https://github.com/zhushixin/my_package"
+  home: "https://github.com/xinalbert/AXtoolkit"
   license: "MIT"
   summary: "A personal Python package example"
