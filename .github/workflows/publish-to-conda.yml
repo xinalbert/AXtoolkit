@@ -10,33 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Set up Miniconda
-      uses: conda-incubator/setup-miniconda@v2
+    - uses: actions/checkout@v2
+    - name: publish-to-conda
+      uses: fcakyon/conda-publish-action@v1.3
       with:
-        auto-update-conda: false
-        python-version: 3.8
-
-    - name: Create and activate environment
-      run: |
-        conda env create -f environment.yml
-        conda init
-        source ~/.bashrc
-        conda activate build-env
-        echo "build-env activated"
-    - name: Install dependencies
-      run: conda install --file=requirements.txt -c conda-forge
-    - name: Check anaconda-client
-      run: which anaconda
-    - name: Build Conda package
-      run: conda build .
-
-    - name: Publish to Anaconda
-      env:
-        ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
-      run: |
-        conda install anaconda-client
-        PACKAGE_PATH=$(conda build --output .)  # 获取生成包的路径
-        anaconda upload $PACKAGE_PATH --label main --user albertxin
+        subdir: '.'
+        anacondatoken: ${{ secrets.ANACONDA_TOKEN }}
+        platforms: 'win osx linux'
