@@ -7,7 +7,7 @@ source:
 
 build:
   number: 0
-  script: python -m pip install .  # 使用 pip 安装
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"  # 使用 pip 安装
 
 requirements:
   host:
@@ -20,6 +20,17 @@ requirements:
     - rdkit
     - pathlib
     - setuptools
+    - numpy
+    - pandas
+    - scipy
+    - scikit-learn
+    - seaborn
+    - joblib
+    - pyyaml
+    - pillow
+    - peptides
+    - snakemake
+    - yaml 
   run:
     - python >=3.8         # 运行时的依赖
     - psutil
@@ -27,6 +38,20 @@ requirements:
     - rdkit
     - pathlib
     - setuptools
+    - numpy
+    - pandas
+    - scipy
+    - scikit-learn
+    - seaborn
+    - joblib
+    - pyyaml
+    - pillow
+    - peptides
+    - snakemake
+    - yaml
+    - htop
+    - ipykernel
+    - jupyter
 
 about:
   home: "https://github.com/xinalbert/AXtoolkit"
