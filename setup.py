@@ -24,7 +24,7 @@ setup(
         'Programming Language :: Python :: 3.8',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',],
-    install_requires=parse_requirements('requirements.txt'),
+    # install_requires=parse_requirements('requirements.txt'),
     python_requires='>=3.8',
     entry_points={
     'console_scripts': [
