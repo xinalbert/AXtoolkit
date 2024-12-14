@@ -3,6 +3,7 @@ import datetime
 import sys
 import shutil
 from pathlib import Path
+import warnings
 
 
 class FileTools:
@@ -43,6 +44,29 @@ class FileTools:
             raise ValueError(f"The directory '{directory}' does not exist or is not a directory.")
         
         search_path = os.path.join(directory, '**', pattern) if recursive else os.path.join(directory, pattern)
+        return glob.glob(search_path, recursive=recursive)
+
+    @staticmethod
+    def get_files_with_pattern(directory, pattern, recursive=False):
+        """This function returns a list of all files in a directory that match the given pattern.
+        Args:
+            directory (str): The directory path.
+            pattern (str): The file pattern to match (e.g., '*.txt').
+            recursive (bool): Whether to search recursively in subdirectories. Default is False.
+        Returns:
+            list: A list of matching file paths.
+        Raises:
+            ValueError: If the directory does not exist or is not a directory.
+        Examples:
+            >>> get_files_with_pattern('/path/to/directory', '*.txt')
+            ['/path/to/directory/file1.txt', '/path/to/directory/file2.txt']
+        """
+        import glob
+        if not os.path.isdir(directory):
+            raise ValueError(f"The directory '{directory}' does not exist or is not a directory.")
+        
+        search_path = os.path.join(directory, '**', pattern) if recursive else os.path.join(directory, pattern)
+        warnings.warn("get_files_with_pattern will be deprecated, please use gfwp instead.", DeprecationWarning)
         return glob.glob(search_path, recursive=recursive)
 
     @staticmethod
@@ -222,6 +246,43 @@ class FileTools:
             '/path/to/new_file.csv'
         """
 
+        time_str = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
+        file_path = os.path.abspath(file_path) if file_path != None else None
+        if file_path == None:
+            pre_path = os.getcwd()
+            print(f"Current working directory: {pre_path}")
+        elif os.path.isdir(file_path):
+            pre_path = file_path
+        else:
+            pre_path = os.path.dirname(file_path)
+        
+        if new_folder != None:
+            pre_path = os.path.join(pre_path, new_folder)
+            os.makedirs(pre_path, exist_ok=True)
+
+        if file_name == None:
+            file_path = os.path.join(pre_path, f'new__file_{time_str}.txt')
+            print(f"New file path: {file_path}")
+            return file_path
+        else:
+            file_path = os.path.join(pre_path, f'{file_name}')
+            return file_path
+    @staticmethod
+    def def_new_save_path(file_path, file_name=None, new_folder=None):
+        """
+        This function returns the new save path of a file path with a new extension.
+
+        Args:
+            - file_path: file path which you want to replace the extension.
+            - file_name: new file name, if None, the new file name will be 'new__file_YYYYMMDD_HHMMSS.txt'. Default is None.
+            - new_folder: new folder name, if None, the new file will be saved in the same folder. Default is None.
+        Return:
+            - the new save path of the file path with a new extension.
+        Examples:
+            >>> def_new_save_path('/path/to/file.txt', 'new_file.csv')
+            '/path/to/new_file.csv'
+        """
+        warnings.warn("def_new_save_path is deprecated, use dnsp instead.", DeprecationWarning)
         time_str = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
         file_path = os.path.abspath(file_path) if file_path != None else None
         if file_path == None:
