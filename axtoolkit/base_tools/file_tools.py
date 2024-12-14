@@ -120,6 +120,7 @@ class FileTools:
         """
         if not os.path.exists(file_path):
             os.makedirs(file_path, exist_ok=True)
+            return file_path
 
     @staticmethod
     def pwd():
@@ -158,6 +159,11 @@ class FileTools:
         Examples:    
             >>> cp('/path/to/file.txt', '/path/to/new_directory')    
         """
+        if os.path.exist(dst):
+            if os.path.isfile(dst):
+                os.remove(dst)
+            else:
+                shutil.rmtree(dst)
         if os.path.isdir(src):
             shutil.copytree(src, dst)
         else:
@@ -192,6 +198,7 @@ class FileTools:
                 shutil.rmtree(file_path)
             else:
                 os.remove(file_path)
+            return file_path
         except OSError as e:
             print(f"Error: {e.args[0]}")
     @staticmethod
