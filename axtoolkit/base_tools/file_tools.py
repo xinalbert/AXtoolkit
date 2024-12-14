@@ -159,7 +159,7 @@ class FileTools:
         Examples:    
             >>> cp('/path/to/file.txt', '/path/to/new_directory')    
         """
-        if os.path.exist(dst):
+        if os.path.exists(dst):
             if os.path.isfile(dst):
                 os.remove(dst)
             else:
