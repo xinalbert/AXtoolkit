@@ -118,9 +118,9 @@ class FileTools:
         Examples:
             >>> mkdir('/path/to/directory')
         """
-        if not os.path.exists(file_path):
-            os.makedirs(file_path, exist_ok=True)
-            return file_path
+        os.makedirs(file_path, exist_ok=True)
+        return file_path
+
 
     @staticmethod
     def pwd():
@@ -150,24 +150,62 @@ class FileTools:
         return os.listdir(directory)
     @staticmethod
     def cp(src, dst):
-        """This function copies a file or directory to a new location.
-        Args:
-            src (str): The path of the file or directory to be copied. 
-            dst (str): The path of the new location.    
-        Raises: 
-            OSError: If the file or directory cannot be copied. 
-        Examples:    
-            >>> cp('/path/to/file.txt', '/path/to/new_directory')    
         """
+        Copies a file or directory to a new location.
+        
+        Parameters:
+        ----------
+        src : str
+            Path of the file or directory to be copied.
+        dst : str
+            Path of the new location. If `dst` is a directory, the file will be copied into it.
+        
+        Raises:
+        -------
+        OSError
+            If the file or directory cannot be copied.
+        ValueError
+            If the source and destination paths are the same.
+        
+        Examples:
+        --------
+        >>> cp('/path/to/file.txt', '/path/to/new_directory')  # Copy file into a directory
+        >>> cp('/path/to/file.txt', '/path/to/new_file.txt')   # Copy file to a specific path
+        >>> cp('/path/to/dir', '/path/to/new_dir')            # Copy directory
+        """
+        # Check if source and destination are the same
+        if os.path.abspath(src) == os.path.abspath(dst):
+            raise ValueError("Source and destination paths are the same.")
+        
+        # If dst is a directory, adjust the destination path for files
+        if os.path.isdir(dst):
+            if os.path.isfile(src):
+                dst = os.path.join(dst, os.path.basename(src))  # Copy file into directory
+        
+        # Remove the destination if it exists
         if os.path.exists(dst):
             if os.path.isfile(dst):
                 os.remove(dst)
             else:
                 shutil.rmtree(dst)
-        if os.path.isdir(src):
-            shutil.copytree(src, dst)
-        else:
-            shutil.copy(src, dst) 
+        
+        # Copy file or directory
+        try:
+            if os.path.isdir(src):
+                shutil.copytree(src, dst)
+            else:
+                shutil.copy2(src, dst)  # Use copy2 to preserve metadata
+        except Exception as e:
+            raise OSError(f"Failed to copy {src} to {dst}: {e}")
+            
+            # Copy file or directory
+            try:
+                if os.path.isdir(src):
+                    shutil.copytree(src, dst)
+                else:
+                    shutil.copy2(src, dst)  # Use copy2 to preserve metadata
+            except Exception as e:
+                raise OSError(f"Failed to copy {src} to {dst}: {e}")
     @staticmethod
     def mv(src, dst):
         """This function moves a file or directory to a new location.
