@@ -10,7 +10,7 @@ class FileTools:
     def __init__(self):
         pass
     @staticmethod
-    def file2list(file_path):
+    def file2list(file_path: str) --> list:
         """Reads a file and returns a list of its lines without newline characters.
         Args:
             file_path (str): The path of the file to be read.
@@ -25,7 +25,7 @@ class FileTools:
         with open(file_path, 'r') as file:
             return [line.strip() for line in file]
     @staticmethod
-    def gfwp(directory, pattern, recursive=False):
+    def gfwp(directory: str, pattern: str, recursive=False) --> list:
         """This function returns a list of all files in a directory that match the given pattern.
         Args:
             directory (str): The directory path.
@@ -47,7 +47,7 @@ class FileTools:
         return glob.glob(search_path, recursive=recursive)
 
     @staticmethod
-    def get_files_with_pattern(directory, pattern, recursive=False):
+    def get_files_with_pattern(directory: str, pattern: str, recursive=False) --> list:
         """This function returns a list of all files in a directory that match the given pattern.
         Args:
             directory (str): The directory path.
@@ -70,7 +70,7 @@ class FileTools:
         return glob.glob(search_path, recursive=recursive)
 
     @staticmethod
-    def get_column(file_path, column_num=1, delimiter='\t'):
+    def get_column(file_path: str, column_num=1: int, delimiter='\t': str) --> list:
         """This function reads a file and yields values from the specified column.
         Args:
             file_path (str): The path of the file to be read.
@@ -149,7 +149,7 @@ class FileTools:
             raise ValueError(f"The directory '{directory}' does not exist or is not a directory.")
         return os.listdir(directory)
     @staticmethod
-    def cp(src, dst):
+    def cp(src: str, dst: str) --> str:
         """
         Copies a file or directory to a new location.
         
@@ -207,7 +207,7 @@ class FileTools:
             except Exception as e:
                 raise OSError(f"Failed to copy {src} to {dst}: {e}")
     @staticmethod
-    def mv(src, dst):
+    def mv(src: str, dst: str) --> str:
         """This function moves a file or directory to a new location.
         Args:
             src (str): The path of the file or directory to be moved. 
