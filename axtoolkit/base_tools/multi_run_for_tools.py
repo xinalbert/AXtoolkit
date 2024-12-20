@@ -16,7 +16,7 @@ class MultiRun:
         self.max_threads = max_threads
         self.kwargs = kwargs
     @staticmethod
-    def get_free_cpus(threshold = 30: int) -> int:
+    def get_free_cpus(threshold[int] = 30) -> int:
         """
         This function returns the number of free CPUs on the system.
         Args:
@@ -30,7 +30,7 @@ class MultiRun:
 
     @staticmethod
     def multi_threads_run(
-        func: Callable, args_list: List[Tuple], max_threads: Optional[int] = None
+        func: Callable, args_list: List[Tuple], max_threads: Optional: int = None
     ) -> List[Any]:
         """
         This function runs a function with multiple arguments in multiple threads.
@@ -47,7 +47,7 @@ class MultiRun:
             num_threads = min(num_threads, max_threads)
         if num_threads <= 0:
             num_threads = 1  # at least use one thread
-
+        print(f"Using {num_threads} threads...")
         # create a pool of threads and run the function with each argument tuple
         with Pool(num_threads) as pool:
             results = pool.starmap(func, args_list)
@@ -57,5 +57,5 @@ class MultiRun:
         """
         调用实例的 `multi_threads_run` 方法并返回结果。
         """
-        print(f"Running function with {threads} threads...")
+        # print(f"Running function with {threads} threads...")
         return MultiRun.multi_threads_run(self.func, self.args_list, self.max_threads)

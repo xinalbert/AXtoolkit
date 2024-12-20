@@ -70,7 +70,7 @@ class FileTools:
         return glob.glob(search_path, recursive=recursive)
 
     @staticmethod
-    def get_column(file_path: str, column_num=1: int, delimiter='\t': str) -> list:
+    def get_column(file_path: str, column_num: int=1, delimiter: str='\t') -> list:
         """This function reads a file and yields values from the specified column.
         Args:
             file_path (str): The path of the file to be read.
@@ -133,7 +133,7 @@ class FileTools:
         """
         return os.getcwd()  
     @staticmethod
-    def ls(directory):
+    def ls(directory: str) -> list:
         """This function returns a list of all files and directories in a directory.
         Args:
             directory (str): The directory path.
