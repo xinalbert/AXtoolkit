@@ -30,7 +30,7 @@ class MultiRun:
 
     @staticmethod
     def multi_threads_run(
-        func: Callable, args_list: List[Tuple], max_threads: Optional: int = None
+        func: Callable, args_list: List[Tuple], max_threads: Optional[int] = None
     ) -> List[Any]:
         """
         This function runs a function with multiple arguments in multiple threads.
