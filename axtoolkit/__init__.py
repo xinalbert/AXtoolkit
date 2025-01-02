@@ -8,6 +8,9 @@ from .base_tools.seq_tools import SeqTools
 from .base_tools.sh_tools import ShellTools
 from .base_tools.text_tools import TextTools
 from .utlscript import *
+from .base_tools.commands import cmd_check
+from .base_tools.utils import run_cmd
+from .base_tools.exceptions import CommandError
 __all__ = ['ColorTools', 'FileTools', 'FigTools',
             'Ligandkit', 'MultiRun',
             'PyDecorator', 'SeqTools', 'ShellTools', 'TextTools']
