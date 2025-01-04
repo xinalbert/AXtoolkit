@@ -28,23 +28,18 @@ def cmd_check(work_dir, cmd_file_name, cmd_list):
     """
 
     cmd_file = work_dir / ".cmd" / cmd_file_name
-    cmd_ran_file = Path(cmd_ok_dir/ (cmd_file_name + ".done"))
-    # print(cmd_ran_file.exists())
-    if cmd_ran_file.exists()==True:
-        print(f"Commands already executed : {cmd_file_name}")
-        return True
-    else:
-        cmd_file.parent.mkdir(parents=True, exist_ok=True)
-        with open(cmd_file, "w") as f:
-            for cmd_str in cmd_list:
-                # print(cmd_str)
-                f.write(cmd_str + '\n')  # 写入命令到文件
-        # 执行命令
+ 
+    cmd_file.parent.mkdir(parents=True, exist_ok=True)
+    with open(cmd_file, "w") as f:
         for cmd_str in cmd_list:
             # print(cmd_str)
-            run_cmd(cmd_str)
-        # 标记命令已执行
-        cmd_ran_file.touch()
-        print(f"Commands executed and file created : {cmd_file_name}")
-        
-        return False
+            f.write(cmd_str + '\n')  # 写入命令到文件
+    # 执行命令
+    for cmd_str in cmd_list:
+        # print(cmd_str)
+        run_cmd(cmd_str)
+    # 标记命令已执行
+
+    print(f"Commands executed and file created : {cmd_file_name}")
+    
+    return True
