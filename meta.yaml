@@ -11,10 +11,10 @@ build:
 
 requirements:
   host:
-    - python >=3.8         # 构建环境所需的依赖
+    - python >=3.6         # 构建环境所需的依赖
     - pip                  # 使用 pip 打包
   build:
-    - python >=3.8         # 构建时的依赖
+    - python >=3.6         # 构建时的依赖
     - psutil
     - matplotlib
     - rdkit
@@ -32,7 +32,7 @@ requirements:
     - snakemake
     - yaml 
   run:
-    - python >=3.8         # 运行时的依赖
+    - python >=3.6         # 运行时的依赖
     - psutil
     - matplotlib
     - rdkit

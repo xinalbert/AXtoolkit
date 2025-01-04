@@ -25,7 +25,7 @@ setup(
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',],
     # install_requires=parse_requirements('requirements.txt'),
-    python_requires='>=3.8',
+    python_requires='>=3.6',
     entry_points={
     'console_scripts': [
         'svg2pngpdf = axtoolkit.utlscript.svg2pngpdf:main',  # 假设有 main 函数
