@@ -4,3 +4,4 @@ setuptools
 rdkit
 anaconda-client
 pathlib
+pymol

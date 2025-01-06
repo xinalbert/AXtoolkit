@@ -220,6 +220,6 @@ def show_hdbonds(prot1, prot2):
     cmd.show("sticks", "highlighted_residues_1")
     util.color_objs("highlighted_residues_1")
     cmd.select('none')
-    cmd.label('''byca(highlighted_residues_1)''', 'oneletter+resi')
-    cmd.set("label_color", "red", 'highlighted_residues_1', quiet=0)  
+    # cmd.label('''byca(highlighted_residues_1)''', 'oneletter+resi')
+    # cmd.set("label_color", "red", 'highlighted_residues_1', quiet=0)  
 
