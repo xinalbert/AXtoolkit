@@ -12,6 +12,7 @@ from .base_tools.commands import cmd_check
 from .base_tools.utils import run_cmd
 from .base_tools.exceptions import CommandError
 from .base_tools.pymol_tools import *
+from .base_tools.smk_tools import *
 __all__ = ['ColorTools', 'FileTools', 'FigTools',
             'Ligandkit', 'MultiRun',
             'PyDecorator', 'SeqTools', 'ShellTools', 'TextTools']
