@@ -16,6 +16,9 @@ def merge2dicts(dict1, dict2):
             if not isinstance(dict1[key], list):
                 dict1[key] = [dict1[key]]
             dict1[key].append(dict2[key])
+        elif dict1.get(key) is None:
+            # 如果键在 dict1 中不存在，直接添加
+            dict1[key] = dict2[key]
         else:
             raise ValueError("Key not found in dict1: {}, tow dicts are not compatible".format(key))
     return dict1
