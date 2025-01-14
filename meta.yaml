@@ -1,6 +1,6 @@
 package:
   name: "axtoolkit"       # 包名
-  version: "0.1.3"         # 版本号
+  version: "0.1.32"         # 版本号
 
 source:
   path: .                  # 本地构建

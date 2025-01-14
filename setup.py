@@ -10,7 +10,7 @@ def parse_requirements(file):
 
 setup(
     name='axtoolkit',
-    version='0.1.31',
+    version='0.1.32',
     description='A toolkit for analyzing and processing data',
     author='AlbertXin',
     author_email='<albert_xin@qq.com>',
