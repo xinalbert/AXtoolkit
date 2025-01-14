@@ -1,6 +1,8 @@
 import psutil
 from multiprocessing import Pool
 from typing import Callable, List, Tuple, Any, Optional
+from tqdm import tqdm
+
 
 class MultiRun:
     def __init__(self, func: Callable, args_list: List[Tuple], max_threads: Optional[int] = None, **kwargs):
@@ -15,6 +17,7 @@ class MultiRun:
         self.args_list = args_list
         self.max_threads = max_threads
         self.kwargs = kwargs
+
     @staticmethod
     def get_free_cpus(threshold: int = 30) -> int:
         """
@@ -48,14 +51,18 @@ class MultiRun:
         if num_threads <= 0:
             num_threads = 1  # at least use one thread
         print(f"Using {num_threads} threads...")
-        # create a pool of threads and run the function with each argument tuple
+
+        # Use tqdm to display progress
+        results = []
         with Pool(num_threads) as pool:
-            results = pool.starmap(func, args_list)
+            with tqdm(total=len(args_list), desc="Processing") as pbar:
+                for result in pool.imap_unordered(func, args_list):
+                    results.append(result)
+                    pbar.update(1)
         return results
 
     def run(self) -> List[Any]:
         """
         调用实例的 `multi_threads_run` 方法并返回结果。
         """
-        # print(f"Running function with {threads} threads...")
         return MultiRun.multi_threads_run(self.func, self.args_list, self.max_threads)
