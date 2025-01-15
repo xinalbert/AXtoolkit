@@ -5,14 +5,14 @@ import subprocess
 class command_Error(Exception):
     pass
 
-def run_cmd(cmd_str,checknum = 0):
+def run_cmd(cmd_str,checknum = [0]):
     """
     run a command in shell
     """
     try:
         process = subprocess.Popen(cmd_str, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         out, err = process.communicate()
-        if process.returncode== checknum:
+        if process.returncode in checknum:
             pass
         else:
             raise command_Error(f"Execution failed for command: {cmd_str}\nError: {err.decode()}")
@@ -20,7 +20,7 @@ def run_cmd(cmd_str,checknum = 0):
         raise command_Error(f"Execution failed for command: {cmd_str}\nError: {e}")
 
 
-def cmd_check(work_dir, cmd_file_name, cmd_list, checknum = 0):
+def cmd_check(work_dir, cmd_file_name, cmd_list, checknum = [0]):
     """
     check if command has been executed before, if not, write\
      command to file and execute it.
@@ -31,7 +31,7 @@ def cmd_check(work_dir, cmd_file_name, cmd_list, checknum = 0):
         work_dir: working directory
         cmd_file_name: command file name
         cmd_list: list of commands to be executed
-        checknum: check number of return code
+        checknum: check number of return code, default is [0]
     Returns:
         True if command has been executed, False if command has not been executed.
     must contain dirs: is work_dir/.cmd and work_dir/.cmd_ok
