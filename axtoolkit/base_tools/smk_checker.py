@@ -15,7 +15,7 @@ def run_cmd(cmd_str,checknum = [0]):
         if process.returncode in checknum:
             pass
         else:
-            raise command_Error(f"Execution failed for command: {cmd_str}\nError: {err.decode()}")
+            raise command_Error(f"Execution failed for command: command return code: {process.returncode}\nError: {err.decode()}")
     except Exception as e:
         raise command_Error(f"Execution failed for command: {cmd_str}\nError: {e}")
 
