@@ -50,6 +50,8 @@ class MultiRun:
             num_threads = min(num_threads, max_threads)
         if num_threads <= 0:
             num_threads = 1  # at least use one thread
+        if len(args_list) == 1:
+            num_threads = 1  # at least use one thread
         print(f"Using {num_threads} threads...")
 
         # Use tqdm to display progress
