@@ -30,6 +30,7 @@ class MultiRun:
         cpu_percent = psutil.cpu_percent(interval=1, percpu=True)
         free_cpus = sum(1 for p in cpu_percent if p < threshold)
         return free_cpus
+    
 
     @staticmethod
     def multi_threads_run(
@@ -53,12 +54,12 @@ class MultiRun:
         if len(args_list) == 1:
             num_threads = 1  # at least use one thread
         print(f"Using {num_threads} threads...")
-
+        
         # Use tqdm to display progress
         results = []
         with Pool(num_threads) as pool:
             with tqdm(total=len(args_list), desc="Processing") as pbar:
-                for result in pool.imap_unordered(func, args_list):
+                for result in pool.starmap(func, args_list):
                     results.append(result)
                     pbar.update(1)
         return results
