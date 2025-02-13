@@ -33,7 +33,7 @@ def run_cmd(cmd_str,checknum = [0]):
         raise command_Error(f"Execution failed for command: {cmd_str}\nError: {e}")
 
 
-def cmd_check(work_dir, cmd_file_name, cmd_list, checknum = [0], parafly = None):
+def cmd_check(work_dir, cmd_file_name, cmd_list, checknum = [0], parafly = None, max_threads=20):
     """
     check if command has been executed before, if not, write\
      command to file and execute it.
@@ -53,7 +53,7 @@ def cmd_check(work_dir, cmd_file_name, cmd_list, checknum = [0], parafly = None)
 
     cmd_file = work_dir / ".cmd" / cmd_file_name
  
-    cmd_file.parent.mkdir(parents=True, exist_ok=True, max_threads=20)
+    cmd_file.parent.mkdir(parents=True, exist_ok=True)
     with open(cmd_file, "w") as f:
         for cmd_str in cmd_list:
             # print(cmd_str)
