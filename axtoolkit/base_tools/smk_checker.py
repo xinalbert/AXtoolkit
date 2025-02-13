@@ -60,7 +60,7 @@ def cmd_check(work_dir, cmd_file_name, cmd_list, checknum = [0], parafly = None)
             f.write(cmd_str + '\n')  # 写入命令到文件
     # 执行命令
     if parafly:
-        num_threads = int(0.6 * MultiRun.get_free_cpus())
+        num_threads = int(0.6 * get_free_cpus())
         if max_threads is not None:
             num_threads = min(num_threads, max_threads)
         if num_threads <= 0:
